@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>SmartAid.com</title>
-  <meta name="description" content="SmartAid.com may be available for acquisition. Escrow required." />
+  <meta name="description" content="SmartAid.com" />
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-YP8H4J51CJ"></script>
@@ -24,37 +24,32 @@
     .row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 14px; }
     .pill { border: 1px solid #e6e6e6; border-radius: 999px; padding: 10px 14px; }
     a { color: inherit; }
-    .small { color:#555; font-size: 14px; margin-top: 18px; }
   </style>
 </head>
 <body>
   <div class="wrap">
     <h1>SmartAid.com</h1>
-    <p class="sub">This domain may be available for acquisition.</p>
+    <p class="sub">Contact: <a id="contactEmailTop" href="mailto:owner@smartaid.com?subject=SmartAid.com%20Inquiry">owner@smartaid.com</a></p>
 
     <div class="card">
       <div class="row">
-        <div class="pill"><strong>Escrow</strong> Required</div>
-        <div class="pill"><strong>Inquiries</strong> <a id="contactEmail" href="mailto:owner@smartaid.com?subject=SmartAid.com%20Inquiry">owner@smartaid.com</a></div>
+        <div class="pill"><strong>Email</strong> <a id="contactEmail" href="mailto:owner@smartaid.com?subject=SmartAid.com%20Inquiry">owner@smartaid.com</a></div>
       </div>
-
-      <p class="small">Email inquiries only.</p>
     </div>
   </div>
 
   <script>
     (function () {
-      var el = document.getElementById('contactEmail');
-      if (!el) return;
-
-      el.addEventListener('click', function () {
-        if (typeof gtag === 'function') {
-          gtag('event', 'contact_click', {
-            method: 'email',
-            link: el.href
-          });
-        }
-      });
+      function track(el) {
+        if (!el) return;
+        el.addEventListener('click', function () {
+          if (typeof gtag === 'function') {
+            gtag('event', 'contact_click', { method: 'email', link: el.href });
+          }
+        });
+      }
+      track(document.getElementById('contactEmail'));
+      track(document.getElementById('contactEmailTop'));
     })();
   </script>
 </body>
